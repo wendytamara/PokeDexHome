@@ -1,0 +1,27 @@
+{
+  "name": "Home",
+  "version": "0.1.0",
+  "summary": "A short description of Home.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/wendytamara/Home",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "wendytamara": "wendytamara811@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/wendytamara/Home.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "14.0"
+  },
+  "source_files": "Home/Classes/**/*",
+  "dependencies": {
+    "CorePokeDex": [
+
+    ]
+  }
+}

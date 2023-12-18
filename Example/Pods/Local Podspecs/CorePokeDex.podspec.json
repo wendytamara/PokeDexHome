@@ -1,0 +1,22 @@
+{
+  "name": "CorePokeDex",
+  "version": "0.1.0",
+  "summary": "A short description of CorePokeDex.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/wendytamara/CorePokeDex",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "wendytamara": "wendytamara811@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/wendytamara/CorePokeDex.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "14.0"
+  },
+  "source_files": "CorePokeDex/Classes/**/*"
+}

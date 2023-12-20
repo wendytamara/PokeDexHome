@@ -1,0 +1,22 @@
+{
+  "name": "CoreEntities",
+  "version": "0.1.0",
+  "summary": "A short description of CoreEntities.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/wendytamara/CoreEntities",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "wendytamara": "wendytamara811@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/wendytamara/CoreEntities.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "14.0"
+  },
+  "source_files": "CoreEntities/Classes/**/*"
+}

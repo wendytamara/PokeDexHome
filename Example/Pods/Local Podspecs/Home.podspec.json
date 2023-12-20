@@ -22,6 +22,25 @@
   "dependencies": {
     "CorePokeDex": [
 
+    ],
+    "CoreEntities": [
+
     ]
-  }
+  },
+  "testspecs": [
+    {
+      "name": "IntegratedTest",
+      "test_type": "unit",
+      "source_files": "Home/Tests/IntegratedTests/**/*"
+    },
+    {
+      "name": "UnitTests",
+      "test_type": "unit",
+      "source_files": [
+        "Home/Tests/UnitTests/**/*",
+        "Home/Tests/Mocks/**/*",
+        "Home/Tests/Spies/**/*"
+      ]
+    }
+  ]
 }

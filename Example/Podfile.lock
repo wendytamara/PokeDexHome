@@ -1,22 +1,28 @@
 PODS:
+  - CoreEntities (0.1.0)
   - CorePokeDex (0.1.0)
   - Home (0.1.0):
+    - CoreEntities
     - CorePokeDex
 
 DEPENDENCIES:
+  - CoreEntities (from `../../CoreEntities`)
   - CorePokeDex (from `../../CorePokeDex`)
   - Home (from `../`)
 
 EXTERNAL SOURCES:
+  CoreEntities:
+    :path: "../../CoreEntities"
   CorePokeDex:
     :path: "../../CorePokeDex"
   Home:
     :path: "../"
 
 SPEC CHECKSUMS:
+  CoreEntities: ad4803609b9296dddfe041d175d75ca42756d575
   CorePokeDex: 0d79e6afe247f93d9a130d57361620e5b92de45d
-  Home: 26cc5836db8522fd01537565046e8d44945894e9
+  Home: e15a28e2c5905f9f5bb6017e4f9156fc7f2a2702
 
-PODFILE CHECKSUM: ffb1f6f826b1f61712ee40d7e3397e85e49c72d3
+PODFILE CHECKSUM: 7cb8fc4388c49d1f532b7e2e249da254e5f856e3
 
 COCOAPODS: 1.14.3

@@ -176,10 +176,12 @@ code_sign_if_enabled() {
 }
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/CoreEntities/CoreEntities.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/CorePokeDex/CorePokeDex.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Home/Home.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/CoreEntities/CoreEntities.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/CorePokeDex/CorePokeDex.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Home/Home.framework"
 fi

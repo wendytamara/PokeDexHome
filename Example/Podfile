@@ -13,5 +13,7 @@ target 'Home_Example' do
   
   
   pod 'CorePokeDex', :path => '../../CorePokeDex'
+  pod 'CoreEntities', :path => '../../CoreEntities'
+
 
 end

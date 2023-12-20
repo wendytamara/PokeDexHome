@@ -47,5 +47,20 @@ TODO: Add long description of the pod here.
   
   
   s.dependency 'CorePokeDex'
+  s.dependency 'CoreEntities'
+
+  
+#  s.test_spec 'IntegratedTest' do |test_spec|
+#    test_spec.source_files = 'Home/IntegratedTests/**/*'
+#  end
+
+s.test_spec 'IntegratedTest' do |test_spec|
+  test_spec.source_files = 'Home/Tests/IntegratedTests/**/*'
+end
+
+s.test_spec 'UnitTests' do |test_spec|
+#    test_spec.requires_app_host = false
+ test_spec.source_files = ['Home/Tests/UnitTests/**/*', 'Home/Tests/Mocks/**/*', 'Home/Tests/Spies/**/*']
+ end
 
 end

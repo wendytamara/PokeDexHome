@@ -29,9 +29,14 @@ final class CoverViewModel: CoverViewModelProtocol {
     }
     
     func getCover(routeImg: String) {
+        //obteniendo el numero de pokemon
+        let indexcut = routeImg.lastIndex(of: "/")
+        let idImage = String(routeImg[indexcut!...])
+        
+        
         delegate?.coverEvent(state: .loading)
         useCase.execute(
-            routeImg: routeImg,
+            routeImg: idImage,
             completion: { [weak self] result in
                 switch result {
                     case .success(let coverImage):

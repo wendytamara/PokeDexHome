@@ -16,7 +16,8 @@ public class PokemonDetailsViewController: UIViewController {
     @IBOutlet weak var lblAvalability: UILabel!
     @IBOutlet weak var lblWeacknesS: UILabel!
     @IBOutlet weak var lblResitence: UILabel!
-    @IBOutlet weak var lblType: UILabel!
+    @IBOutlet weak var lblType: UILabel!  
+    @IBOutlet weak var imgLogo: UIImageView!    
     
     var pokemonDetailViewModel: PokemonDetailViewModelProtocol?
     var pokemonCoverViewModel: CoverViewModelProtocol?
@@ -28,23 +29,25 @@ public class PokemonDetailsViewController: UIViewController {
 
         
         if let pokemon = pokemonDetailViewModel?.pokemon {
+                        
+            let typePokemon = pokemon.type[0]
             
-            // añadirle elementos
-            
-            print(pokemon)
+            if let cardPokemon = pokemonDetailViewModel?.getCardByType(type: typePokemon) {
+                bgCard.image = ResourcesHelper.getImageFromBundle(imageName: cardPokemon)           
+            }
                 
-            bgCard.image = ResourcesHelper.getImageFromBundle(imageName: "fire")
-            bgImgCover.image = ResourcesHelper.getImageFromBundle(imageName: "bg_heaven")
+            
+            bgImgCover.image = ResourcesHelper.getImageFromBundle(imageName: "bg_gradient")
+            imgLogo.image = ResourcesHelper.getImageFromBundle(imageName: "Logo")
+
             lblTitle.text = pokemon.name.capitalized  
             lblAbout.text = pokemon.about
             lblAvalability.text = pokemon.specialAtack[0].name.capitalized
             lblWeacknesS.text = pokemon.weaknesses[0]
             lblResitence.text = pokemon.resistant[0]
-            lblType.text = pokemon.type[0].capitalized
+            lblType.text = typePokemon.capitalized
             
-            let coverID = pokemon.img
-            let indexcut = coverID.lastIndex(of: "/")
-            pokemonCoverViewModel?.getCover(routeImg: String(coverID[indexcut!...]))                
+            pokemonCoverViewModel?.getCover(routeImg: pokemon.img)
         }
     } 
 }
@@ -54,14 +57,11 @@ extension PokemonDetailsViewController : PokemonCoverViewModelDelegateProtocol {
     func coverEvent(state: ViewControllerState) {
         switch state {
         case .success:
-//            self.actIndCover.stopAnimating()
             self.imgCover.image = pokemonCoverViewModel?.coverImage
         case .loading:
-//            self.actIndCover.startAnimating()
             print("loading")
         case .error:
             self.imgCover.image = ResourcesHelper.getImageFromBundle(imageName: "book_placeholder")
-//            self.actIndCover.stopAnimating()
         }
     }
     

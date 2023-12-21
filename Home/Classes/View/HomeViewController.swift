@@ -19,8 +19,8 @@ public class HomeViewController: UIViewController {
     
     @IBOutlet weak var txtLabel: UILabel!
     var coordinator: Coordinator?
-
-
+    
+        
     
     public override func viewDidLoad() {
         
@@ -28,9 +28,7 @@ public class HomeViewController: UIViewController {
         let repository = RemotePokemonRepository(dataSource: dataSource)
         let useCase = PokemonListingUseCase(pokemonRepository: repository)
         homeViewModel = HomeViewModel(useCase: useCase)
-
         homeViewModel?.delegate = self
-        
         homeViewModel?.requestList()
     }
 }
@@ -41,17 +39,12 @@ extension HomeViewController: HomeViewModelDelegateProtocol {
     func homeEvent(state: ViewControllerState) {
         switch state {
         case .success:
-//            actIndFetchData.stopAnimating()
             homeTableView.reloadData()
         case .loading:
-            print("borrar")
+            print(".loading")
 
-//            self.txtTopic.backgroundColor = UIColor.clear
-//            actIndFetchData.startAnimating()
         case .error:
-            print("borrar")
-//            actIndFetchData.stopAnimating()
-//            self.txtTopic.backgroundColor = UIColor.red
+            print(".error")
         }
     }
 }

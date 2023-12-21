@@ -13,8 +13,10 @@ class PokemonCell: UITableViewCell {
 
     
     @IBOutlet weak var lblTitle: UILabel!
-    
     @IBOutlet weak var imgCover: UIImageView!
+    @IBOutlet weak var imgBgCard: UIImageView!
+    @IBOutlet weak var bgImgCover: UIImageView!
+    @IBOutlet weak var imgLogo: UIImageView!
     
     
     var useCase: GetPokemonCoverUseCaseProtocol?
@@ -37,10 +39,8 @@ class PokemonCell: UITableViewCell {
     
     public func getCover(){
         if let coverID = self.pokemon?.img {
-            let indexcut = coverID.lastIndex(of: "/")
-            print(String(coverID[indexcut!...]))
-            
-            viewModel?.getCover(routeImg: String(coverID[indexcut!...]))
+
+            viewModel?.getCover(routeImg: coverID)
         }
     }
     
@@ -48,7 +48,10 @@ class PokemonCell: UITableViewCell {
     public func setInitialData () {
                 
         imgCover.image = ResourcesHelper.getImageFromBundle(imageName: "book_placeholder")
-        lblTitle.text = pokemon?.name.capitalized
+        lblTitle.text = pokemon?.name.capitalized      
+        imgBgCard.image = ResourcesHelper.getImageFromBundle(imageName: "bg_card_small_normal")       
+        bgImgCover.image = ResourcesHelper.getImageFromBundle(imageName: "bg_gradient")
+        imgLogo.image = ResourcesHelper.getImageFromBundle(imageName: "Logo")
 
     }
 }
@@ -56,15 +59,12 @@ class PokemonCell: UITableViewCell {
 
 extension PokemonCell: PokemonCoverViewModelDelegateProtocol {
     func coverEvent(state: CorePokeDex.ViewControllerState) {
-//        print(pokemon, "wendy 50")
 
         switch state {
         case .success:
-//            self.actIndCover.stopAnimating()
             self.imgCover.image = viewModel?.coverImage
             print("success \(pokemon?.img)")
         case .loading:
-//            self.actIndCover.startAnimating()
             print("loading: \(pokemon?.img) ")
         case .error:
             print("error")

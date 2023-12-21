@@ -35,29 +35,6 @@ public class HomeViewController: UIViewController {
     }
 }
 
-// para mostrar el tableView necesita de un delegate y un dataSource
-// se le tiene que indicar a la tabla quien es su dataSource, ubicandose en en storyboard, en la tabla y abriendo el detalle en outlets y jalando el item a el homeViewController, el que aparece en la lista de items del storyboard
-
-extension HomeViewController: UITableViewDataSource {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // de devuelve la cantidad de registros que tiene la data
-        homeViewModel?.pokemons.count ??  0
-    }
-    
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // aqui tiene retornar una celda
-        
-        let pokemonCell =
-            self.homeTableView.dequeueReusableCell(withIdentifier: "pokemonCell", for: indexPath) as! PokemonCell
-        
-        pokemonCell.getCover(pokemon: homeViewModel?.pokemons[indexPath.row])
-        pokemonCell.lblTitle.text = homeViewModel?.pokemons[indexPath.row].name.capitalized
-        
-        return pokemonCell
-    }
-    
-}
-
 
 
 extension HomeViewController: HomeViewModelDelegateProtocol {

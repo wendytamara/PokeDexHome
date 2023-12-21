@@ -35,20 +35,22 @@ class PokemonCell: UITableViewCell {
     }
     
     
-    public func getCover(pokemon: Pokemon?){
-        self.pokemon = pokemon
+    public func getCover(){
         if let coverID = self.pokemon?.img {
             let indexcut = coverID.lastIndex(of: "/")
             print(String(coverID[indexcut!...]))
-            
-            
             
             viewModel?.getCover(routeImg: String(coverID[indexcut!...]))
         }
     }
     
     
-    
+    public func setInitialData () {
+                
+        imgCover.image = ResourcesHelper.getImageFromBundle(imageName: "book_placeholder")
+        lblTitle.text = pokemon?.name.capitalized
+
+    }
 }
 
 

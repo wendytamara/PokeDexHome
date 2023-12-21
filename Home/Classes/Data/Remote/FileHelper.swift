@@ -25,4 +25,5 @@ class FileHelper {
         let fileURL = self.getDocumentsDirectory().appendingPathComponent(fileName)
         return FileManager.default.fileExists(atPath: fileURL.path)
     }
+    
 }

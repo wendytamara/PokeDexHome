@@ -1,7 +1,7 @@
 
 
 import UIKit
-//import CoreEntities
+import CoreEntities
 
 public class HomeViewFactory {
     static let moduleBundle = Bundle(for: HomeViewFactory.self)
@@ -13,6 +13,24 @@ public class HomeViewFactory {
         ).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
         else { return nil}
         return homeViewController
+    }
+    
+    
+    static func getPokemonDetailsView(pokemon: Pokemon) -> PokemonDetailsViewController? {
+        guard let pokemonDetailsViewController = UIStoryboard.init(
+            name: "Home",
+            bundle: moduleBundle
+        ).instantiateViewController(withIdentifier: "PokemonDetailsViewController") as? PokemonDetailsViewController
+        else { return nil}
+             
+            let detailsViewModel = PokemonDetailViewModel(pokemon: pokemon)
+            pokemonDetailsViewController.pokemonDetailViewModel = detailsViewModel
+            let coverUseCase = GetPokemonCoverUseCase()
+            let coverViewModel = CoverViewModel(useCase: coverUseCase)
+            pokemonDetailsViewController.pokemonCoverViewModel = coverViewModel
+        
+
+        return pokemonDetailsViewController
     }
     
 

@@ -8,7 +8,7 @@ class PokemosMockDataSource: PokemonDataSourceProtocol {
         completion: @escaping (Result<PokemonsResponseDTO, Error>) -> Void
     ) {
         do {
-            let responseDTO = try JSONDecoder().decode(PokemonsResponseDTO.self, from: Data(JSONDataProvider.booksDTOResponse.utf8))
+            let responseDTO = try JSONDecoder().decode(PokemonsResponseDTO.self, from: Data(JSONDataProvider.pokemonsDTOResponse.utf8))
             completion(.success(responseDTO))
         } catch {
             completion(.failure(error))

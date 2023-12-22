@@ -47,23 +47,6 @@ struct PokemonAtack: Decodable {
 }
 
 
-struct PokemonStats: Decodable {
-    
-    private enum CodingKeys: String, CodingKey {
-        case baseAttack = "base-attack"
-        case baseDefense = "base-defense"
-        case baseStamina = "max-cp"
-        case maxCp = "max-hp"
-        case maxHp = "base-stamina"
-    }
-    
-    let baseAttack: String
-    let baseDefense: String
-    let baseStamina: String
-    let maxCp: String
-    let maxHp: String
-
-}
 
 //results
 struct PokemonDTO: Decodable {

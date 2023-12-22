@@ -3,7 +3,7 @@ use_frameworks!
 platform :ios, '14.0'
 
 target 'Home_Example' do
-  pod 'Home', :path => '../'
+  pod 'Home', :path => '../', :testspecs => ['IntegratedTest', 'UnitTests']
 
   target 'Home_Tests' do
     inherit! :search_paths

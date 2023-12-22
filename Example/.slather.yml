@@ -1,0 +1,11 @@
+xcodeproj: ./Home.xcodeproj
+scheme: Home-Example
+workspace: ./Home.xcworkspace
+
+binary_basename:
+- Home
+
+ignore:
+
+- ../Home/Classes/View/*
+

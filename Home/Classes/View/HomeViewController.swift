@@ -20,14 +20,24 @@ public class HomeViewController: UIViewController {
     @IBOutlet weak var txtLabel: UILabel!
     var coordinator: Coordinator?
     
+    @IBOutlet weak var actIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var inputSearch: UISearchBar!
+    
         
+    @IBAction func btnSearch(_ sender: Any) {      
+        homeViewModel?.filterPokemonsByName(name: inputSearch?.text ?? "" )
+        homeTableView.reloadData()     
+    }
     
     public override func viewDidLoad() {
         
         let dataSource = PokemonRemoteDataSource()
         let repository = RemotePokemonRepository(dataSource: dataSource)
         let useCase = PokemonListingUseCase(pokemonRepository: repository)
-        homeViewModel = HomeViewModel(useCase: useCase)
+        
+        let useCaseSearch = SearchPokemonsUseCase()
+
+        homeViewModel = HomeViewModel(useCase: useCase, useCaseSearch: useCaseSearch)
         homeViewModel?.delegate = self
         homeViewModel?.requestList()
     }
@@ -39,11 +49,15 @@ extension HomeViewController: HomeViewModelDelegateProtocol {
     func homeEvent(state: ViewControllerState) {
         switch state {
         case .success:
+            actIndicator.stopAnimating()
             homeTableView.reloadData()
         case .loading:
+            actIndicator.startAnimating()
             print(".loading")
 
         case .error:
+            actIndicator.stopAnimating()
+
             print(".error")
         }
     }

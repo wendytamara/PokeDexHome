@@ -22,8 +22,9 @@ public class HomeViewFactory {
             bundle: moduleBundle
         ).instantiateViewController(withIdentifier: "PokemonDetailsViewController") as? PokemonDetailsViewController
         else { return nil}
-             
-            let detailsViewModel = PokemonDetailViewModel(pokemon: pokemon)
+            let cardImageUseCase = GetCardImageUseCase()
+
+            let detailsViewModel = PokemonDetailViewModel(pokemon: pokemon, useCase: cardImageUseCase)
             pokemonDetailsViewController.pokemonDetailViewModel = detailsViewModel
             let coverUseCase = GetPokemonCoverUseCase()
             let coverViewModel = CoverViewModel(useCase: coverUseCase)
